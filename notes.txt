@@ -1,0 +1,19 @@
+Docker:
+
+Crear las redes 
+docker network create --driver bridge [nombreRed]
+
+Crear volumnes
+docker volume create [nombreVolumen]
+
+Jenkins:
+
+1. Encender el servicio 
+
+2. Cambiar el nombre del proyecto en el Jenkinsfile
+
+Pasos para hacer deploy con Jenkins:
+
+Primero crear un repositorio en GitHub y subir el proyecto
+Luego crear un nuevo proyecto en Jenkins y enlazarlo con el repositorio de GitHub
+Configurar las credenciales de DockerHub en Jenkins

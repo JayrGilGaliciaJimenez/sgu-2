@@ -1,0 +1,41 @@
+services:
+  frontend:
+    # cambiar nombre imagen
+    image: client:1.0-sgu2 
+    build:
+      context: ./client
+      args:
+        API_HOST: localhost
+        API_PORT: 8080
+        # cambiar url 
+        API_BASE: /api/test
+    container_name: sgu2-frontend
+    ports:
+    # mapear puerto 3000 al puerto 80 del contenedor
+      - "3000:80"
+    networks:
+    # crear red con el comando docker network create --driver bridge sgu2-net
+    # cambiar nombre de red
+      - sgu2-net
+  backend:
+  # cambiar nombre imagen 
+    image: server:1.0-sgu2
+    build:
+      context: ./server
+    container_name: sgu2-backend
+    environment:
+      SERVER_PORT: 8080
+    ports:
+      - "8081:8080"
+    networks:
+      - sgu2-net
+    depends_on:
+      - frontend
+volumes:
+# crear volumen con el comando docker volume create sgu2-volume
+  sgu2-volume:
+    external: true
+
+networks:
+  sgu2-net:
+    external: true

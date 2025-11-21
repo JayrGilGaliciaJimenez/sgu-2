@@ -5,6 +5,7 @@ function App() {
   const [formData, setFormData] = useState({ num1: '', num2: '' })
   const [status, setStatus] = useState({ loading: false, message: '' })
   const [result, setResult] = useState(null)
+  const baseUrl = `http://${import.meta.env.VITE_API_HOST}:${import.meta.env.VITE_API_PORT}${import.meta.env.VITE_API_BASE}`
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -18,7 +19,8 @@ function App() {
     setStatus({ loading: true, message: '' })
 
     try {
-      const response = await fetch('http://localhost:8080/api/test/getResult', {
+      
+      const response = await fetch(`${baseUrl}/getResult`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
