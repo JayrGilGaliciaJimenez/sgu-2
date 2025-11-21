@@ -6,7 +6,16 @@ docker network create --driver bridge [nombreRed]
 Crear volumnes
 docker volume create [nombreVolumen]
 
+Comandos para crear los contenedores y servicios con Docker Compose:
+docker compose build --no-cache
+docker compose up -d
+Comandos para detener los contenedores y servicios con Docker Compose:
+docker compose down
+
+
 Jenkins:
+
+
 
 1. Encender el servicio 
 

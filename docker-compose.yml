@@ -6,7 +6,8 @@ services:
       context: ./client
       args:
         API_HOST: localhost
-        API_PORT: 8080
+        # el backend queda expuesto en el host en 8082 para evitar conflicto con 8080/8081
+        API_PORT: 8082
         # cambiar url 
         API_BASE: /api/test
     container_name: sgu2-frontend
@@ -24,9 +25,10 @@ services:
       context: ./server
     container_name: sgu2-backend
     environment:
-      SERVER_PORT: 8080
+      SERVER_PORT: 8081
     ports:
-      - "8081:8080"
+      # expone el 8081 interno en el 8082 del host para no chocar con otros servicios
+      - "8082:8081"
     networks:
       - sgu2-net
     depends_on:
